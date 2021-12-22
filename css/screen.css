@@ -1,0 +1,812 @@
+/*------------------------------------*\
+#FONTS
+\*------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+
+:root {
+    /* colors */
+    --global-color-neutral-100: #ffffff;
+    --global-color-neutral-200: #f5f6f7;
+    --global-color-neutral-300: #ebeced;
+    --global-color-neutral-400: #dadee0;
+    --global-color-neutral-500: #c6cacc;
+    --global-color-neutral-600: #a1a4a6;
+    --global-color-neutral-700: #747b80;
+    --global-color-neutral-800: #5d6266;
+    --global-color-neutral-900: #444b50;
+    --global-color-neutral-1000: #222526;
+    --global-color-neutral-1100: #16181a;
+
+    --global-color-alpha-500: #1AA3FF;
+    --global-color-alpha-600: #1C95E6;
+    --global-color-alpha-700: #107bc2;
+    --global-color-alpha-800: #2881d4;
+
+    /* global page settings */
+    --global-page-color: var(--global-color-neutral-1000);
+    --global-heading-color: var(--global-color-neutral-900);
+    --global-page-backgroundColor: var(--global-color-alpha-500);
+    --global-selection-backgroundColor: var(--global-color-alpha-500);
+    --global-link-color: var(--global-color-alpha-600);
+    --global-link-hoverColor: var(--global-color-alpha-500);
+    --global-link-outlineColor: var(--global-color-alpha-600);
+
+    /* inputs */
+    --global-input-backgroundColor: var(--global-color-alpha-500);
+    --global-input-borderColor: var(--global-color-alpha-600);
+    --global-input-hover-borderColor: var(--global-color-alpha-700);
+    --global-input-checked-backgroundColor: var(--global-color-alpha-800);
+
+    /* borders */
+    --global-borderRadius: 8px;
+    --global-borderWidth: 4px;
+    --global-borderColor: var(--global-color-neutral-500);
+    --global-borderColor-dark: var(--global-color-neutral-900);
+
+    /* transitions */
+    --global-transitionEasing-out: ease-out;
+    --global-transitionDuration-alpha: 100ms;
+    --global-transitionDuration-beta: 300ms;
+
+    /* baseline */
+
+    --global-baseline: calc(1rem / 2);
+
+    --global-whitespace-sm: var(--global-baseline);
+    --global-whitespace-md: calc(var(--global-baseline) * 2);
+    --global-whitespace-base: calc(var(--global-baseline) * 3);
+    --global-whitespace-lg: calc(var(--global-baseline) * 4);
+}
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+html {
+    font-size: 100%;
+    line-height: 1.5;
+    font-family: 'Inter', sans-serif;
+    color: var(--global-page-color);
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: white;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    height: 100vh;
+    margin: 0; 
+    padding: 0;
+}
+
+/*
+* Remove text-shadow in selection highlight:
+* https://twitter.com/miketaylr/status/12228805301
+*
+* Customize the background color to match your design.
+*/
+
+::selection {
+    background: orange;
+    color: white;
+    text-shadow: none;
+}
+
+/*------------------------------------*\
+#Elements
+\*------------------------------------*/
+
+/*
+Elements: Images
+---
+Default markup for images to make them responsive
+*/
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1,
+h2,
+h3 {
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 48px;
+    margin: 0 0 24px;
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 40px;
+    margin: 0 0 24px;
+}
+
+h3 {
+    font-size: 26px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 0 0 24px;
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+    margin: 0 0 24px;
+}
+
+ul,
+ol {
+    padding-left: 24px;
+}
+
+li ul,
+li ol {
+    margin-bottom: 0;
+}
+
+blockquote {
+    font-style: normal;
+    font-size: 23px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+blockquote * {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+figcaption {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 8px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: LightGrey;
+    margin: 0 0 24px;
+}
+
+a {
+    transition: all var(--transition-alpha);
+    color: var(--color-alpha);
+    outline-color: var(--color-alpha);
+    outline-width: medium;
+    outline-offset: 2px;
+}
+
+p {
+    font-size: 14px;
+}
+
+a:visited,
+a:active {
+    color: var(--color-alpha);
+}
+
+a:hover,
+a:focus {
+    color: var(--color-alpha-light);
+}
+
+label,
+input {
+    display: inline-block;
+}
+
+select {
+    width: 100%;
+}
+
+input::placeholder {
+    color: var(--color-neutral);
+}
+
+input:disabled {
+    cursor: not-allowed;
+}
+
+svg * {
+    width:  100%;
+    height: 100%;
+}
+
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-row {
+    position: relative;
+    padding: 24px 24px 0;
+}
+
+/* size modifiers */
+
+.o-row--lg {
+    padding-top: 48px;
+    padding-bottom: 24px;
+}
+
+
+/*
+    Objects: Container
+    ---
+    Creates a horizontal container that sets de global max-width
+*/
+
+.o-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90.85;
+    width: 100%;
+    height: 100%;
+}
+
+/*
+    Objects: section
+    ---
+    Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+    position: relative;
+}
+
+.o-section + .o-section {
+    padding-top: 8px;
+}
+
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+    list-style: none;
+    padding: 0;
+}
+
+/*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+.o-button-reset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
+
+/*
+    Object: Hide accessible
+    ---
+    Accessibly hide any element
+*/
+
+.o-hide-accessible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+/*
+    Component: Card
+*/
+
+.c-card {
+    background-color: var(--global-color-neutral-100);
+    padding: var(--global-whitespace-lg);
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+    height: 100%;
+}
+
+.c-card__item {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.c-card__item--left {
+    width: 50%;
+}
+
+.c-card__item--right {
+    width: 50%;
+}
+
+.c-card__header {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.c-card__header--grid--item__celsius {
+    margin-right: 5px;
+}
+
+.c-card__header--grid--item__toggle-mode {
+    justify-self: end;
+}
+
+@media (min-width: 768px) {
+    .c-card__item--fullscreen {
+        display: flex;
+        margin-top: 50px;
+    }
+
+    .c-card__item--fullscreen__left {
+        width: 50%;
+    }
+    
+    .c-card__item--fullscreen__right {
+        width: 50%;
+    }    
+}
+
+
+/*
+    Component: Weather
+*/
+
+.c-weather {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.c-weather__middle {
+    border-right: dashed 2px var(--global-color-neutral-500);
+}
+
+.c-weather--location {
+    font-size: 38px;
+    text-align: center;
+}
+
+@media (min-width:768px){
+    .c-weather--location {
+        font-size: 60px;
+    }
+}
+
+.c-weather--date {
+    font-size: 20px;
+    text-align: center;
+}
+
+.c-weather--temperature {
+    font-size: 60px;
+    text-align: center;
+}
+
+@media (min-width: 998px) {
+    .c-weather--temperature {
+        margin-bottom: -15px;
+    }
+}
+
+.c-weather--feelslike {
+    text-align: center;
+}
+
+.c-weather--condition {
+    margin: auto;
+    width: 200px;
+    height: 200px;
+}
+
+.c-weather--condition__icon {
+    width: 180px;
+    height: 180px;
+}
+
+.c-weather--detail {
+    padding-left: 35px;
+    padding-bottom: 15px;
+}
+
+/*
+@media (min-width: 998px) {
+    .c-weather--detail {
+        padding-left: 40%;
+    }
+}
+*/
+
+.c-weather--empty {
+    height: 20px;
+}
+
+
+.c-weather--detail__value {
+    font-size: 28px;
+}
+
+/*
+    Component: Toggle Light mode / Dark mode
+*/
+
+.c-toggle-mode--label {
+    width: 125px !important;
+    height: 50px !important;
+    background: var(--global-input-backgroundColor);
+    border-radius: 100px;
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
+    display: flex;
+    position: relative;
+    transition: all var(--global-transitionDuration-beta) ease-in;
+}
+
+.c-toggle-mode--label:before {
+    animation-name: reverse;
+    animation-duration: var(--global-transitionDuration-beta);
+    animation-fill-mode: forwards;
+    transition: all var(--global-transitionDuration-beta) ease-in;
+    content: '';
+    width: 40px !important;
+    height: 40px !important;
+    border: 5px solid #f5eb71;
+    left: 4px;
+    position: absolute;
+    border-radius: 82px;
+    background: #fffaa8;
+    top: 1px !important;
+}
+
+@keyframes reverse {
+    0% {
+      left: 65%;
+    }
+    60% {
+      left: 38%;
+    }
+    100% {
+      left: 1%;
+    }
+}
+
+.c-toggle-mode--checkbox:checked + .c-toggle-mode--label {
+    background: var(--global-input-backgroundColor);
+    border-color: var(--global-input-borderColor);
+}
+
+.c-toggle-mode--checkbox:checked + .c-toggle-mode--label:before {
+    background: white;
+    border-color: var(--global-color-neutral-300);
+    animation-name: switch;
+    animation-duration: 350ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes switch {
+    0% {
+      left: 1%;
+    }
+    60% {
+        left: 38%;
+    }
+    100% {
+      left: 65%;
+    }
+}
+
+/*
+    Component: Toggle Degrees
+*/
+
+.c-toggle-degrees--label {
+    width: 75px;
+    height: 45px;
+    background: var(--global-input-backgroundColor);
+    border-radius: var(--global-borderRadius);
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
+    display: flex;
+    position: relative;
+    transition: all var(--global-transitionDuration-beta) ease-in;
+}
+
+.c-toggle-degrees--label__option {
+    margin: auto;
+}
+
+.c-toggle-degrees__celsius:checked + .c-toggle-degrees--label {
+    background: var(--global-input-checked-backgroundColor);
+    border-color: var(--global-input-borderColor);
+}
+
+.c-toggle-degrees--label:hover {
+    border-color: var(--global-input-hover-borderColor);
+}
+
+.c-toggle-degrees__farenheit:checked + .c-toggle-degrees--label {
+    background: var(--global-input-checked-backgroundColor);
+    border-color: var(--global-input-borderColor);
+}
+
+/*
+    Component: Chart
+*/
+
+.c-chart {
+    min-width: 100% !important;
+    max-height: 300px !important; 
+    padding-top: 5px;
+}
+
+
+/*------------------------------------*\
+#UTILITIES
+\*------------------------------------*/
+
+/*
+    Utilities: color
+    ---
+    Utility classes to put specific colors onto elements
+*/
+
+.u-color-neutral-light {
+    color: lightGray;
+}
+
+.u-color-neutral {
+    color: Gray;
+}
+
+/*
+    Utilities: spacing
+    ---
+    Utility classes to put specific margins and paddings onto elements
+*/
+
+.u-pt-clear {
+    padding-top: 0 !important;
+}
+
+.u-mb-clear {
+    margin-bottom: 0 !important;
+}
+
+.u-mb-xs {
+    margin-bottom: 4px !important;
+}
+
+.u-mb-sm {
+    margin-bottom: 8px !important;
+}
+
+.u-mb-md {
+    margin-bottom: 16px !important;
+}
+
+.u-mb-lg {
+    margin-bottom: 32px !important;
+}
+
+.u-mb-xl {
+    margin-bottom: 48px !important;
+}
+
+/*
+    Utilities: max-width
+    ---
+    Utility classes to put specific max widths onto elements
+*/
+
+.u-max-width-xs {
+    max-width: 27em !important;
+}
+
+.u-max-width-sm {
+    max-width: 32em !important;
+}
+
+.u-max-width-md {
+    max-width: 50em !important;
+}
+
+.u-max-width-lg {
+    max-width: 63.5em !important;
+}
+
+.u-max-width-none {
+    max-width: none !important;
+}
+
+
+/*
+    Utilities: align
+    ---
+    Utility classes align text or components
+*/
+
+.u-text-align-center {
+    text-align: center;
+}
+
+.u-align-center {
+    margin: 0 auto;
+}
+
+/*
+    Utilities: text
+    Utility classes to create smaller or bigger test
+*/
+
+.u-text-sm {
+    font-size: 14px;
+}
+
+/*------------------------------------*\
+#MEDIA
+\*------------------------------------*/
+
+/*
+    Media Queries
+    ---
+    EXAMPLE Media Queries for Responsive Design.
+    These examples override the primary ('mobile first') styles.
+    USE THEM INLINE!
+*/
+
+/* Extra small devices (portrait phones, less than 576px)
+No media query since this is the default in mobile first design
+*/
+
+/* Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+*/
+
+/* Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+*/
+
+/* Large devices (landscape tablets, desktops, 992px and up)
+@media (min-width: 992px) {}
+*/
+
+/* Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+*/
+
+/*
+    Print styles.
+    ---
+    Inlined to avoid the additional HTTP request:
+    http://www.phpied.com/delay-loading-your-print-css/
+*/
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster:
+        http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    /*
+    * Don't show links that are fragment identifiers,
+    * or use the `javascript:` pseudo protocol
+    */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    /*
+    * Printing Tables:
+    * http://css-discuss.incutio.com/wiki/Printing_Tables
+    */
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" class="is-day is-loaded">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather App</title>
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/screen.css">
+        <link rel="icon" type="image/x-icon" href="/img/svg/favicon.svg">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <script src="script/app.js"></script>
+    </head>
+    <body>
+        <div class="o-container">
+            <div class="c-card" id="js-card">
+                <div class="c-card__header">
+                    <div class="c-card__header--grid--item__celsius">
+                        <input type="radio" checked="checked" id="toggle-degrees" name="degrees" class="c-toggle-degrees c-toggle-degrees__celsius o-hide-accessible" />
+                        <label for="toggle-degrees" class="c-toggle-degrees--label">
+                            <span class="c-toggle-degrees--label__option">C</span>
+                        </label>
+                    </div>
+                    <div class="c-card__header--grid--item__farenheit">
+                        <input type="radio" id="toggle-degrees2" name="degrees" class="c-toggle-degrees c-toggle-degrees__farenheit o-hide-accessible" />
+                        <label for="toggle-degrees2" class="c-toggle-degrees--label">
+                            <span class="c-toggle-degrees--label__option">F</span>
+                        </label>
+                    </div>
+                    <div class="c-card__header--grid--item__toggle-mode">
+                        <input type="checkbox" id="toggle" class="c-toggle-mode--checkbox o-hide-accessible" />
+                        <label for="toggle" class="c-toggle-mode--label"></label>
+                    </div>
+                </div>
+                <div class="c-card__item--fullscreen">
+                    <div class="c-card__item--fullscreen__left">
+                        <div class="c-weather c-weather--location" id="js-location">
+                            London
+                        </div>
+                        <div class="c-weather c-weather--date" id="js-date">
+                            2021-16-12
+                        </div>
+                    </div>
+                    <div class="c-card__item--fullscreen__right">
+                        <div class="c-weather c-weather--temperature" id="js-temperature">
+                            25°
+                        </div>
+                        <div class="c-weather c-weather--feelslike" id="js-feelslike">
+                            Feels like 27°
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="c-card__item">
+                    <div class="c-card__item--left">
+                        <div class="c-weather c-weather__middle">
+                            <div class="c-weather--condition" id="js-weathericon">
+                                <svg class="c-weather--condition__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+                                    <image id="_284" data-name="284" width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyMUM5RDlFMERCREIxMUUyOEEzMEU0Rjc2NDkyREJFOCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyMUM5RDlFMURCREIxMUUyOEEzMEU0Rjc2NDkyREJFOCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjIwQjBCRkE1REJEQjExRTI4QTMwRTRGNzY0OTJEQkU4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjIwQjBCRkE2REJEQjExRTI4QTMwRTRGNzY0OTJEQkU4Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+s4fbGQAABN1JREFUeNrsWl9MW1UY/1pKW2i7dO3K39GylkELuA1lcwqLMSYaZxYfjDFmL5smJsZp9rBkxgd90pj4YnSJmYsv6pN/EzXxQZY9TI3iA+DQOBjZBPYH5gQHxbZA8fc19+BlllDa+w93vuSXc893b8893+/77jnfOae2paUlup3FJgmQBEgCJAGSAEmAJEASIAmQBEgCJAGSAEmAJCD/Qzab7h1568Q7fhQNQADIAFeA0ReOPFu0hwqyzUwCYHQcxVPAASCe55Ep4DTwIfAlyMj+LwiA4fUoXgcOcvMF/uxX4ChI+GZDEwDjH0bxARBU6x0OB/l8PnK5nJRdzNJsMklzc3P5mngTOAYiFjccATCePf4+YBe6+vo6aorFKBgMkN1uX/F8EgSM/j5KwxdGKJPJqG99DDy5FgmF2OYwarSF8fepjfd4PLRnd2fO8NXEU1lJiUScYrEo9fUN0Nj4uLj1ODABPL8hZgEYvxnFIFDH9UBgM3V3dZHTWb6udgYHf6Hfzg+pVQcQBV+VEgF2gwLgJWG82+2mrnvvWbfxLO3tbRSJhNWqEyDXWUrHHDqEugvFg8D9wHaAvd8p7t91ZwcGOlfR7Xfs2kmTE5P0dyrF1QjwhDKomksADOe2jvIIDVTne4ZDv7a2pqT38GzR0tJM/QM/C9XhUgiwa2Q8e+IH4I3VjM+5KxLRhOxwOKwel7rxfo9pEYCXN6L4lmc0ofN6PRRuaKAARng3wn1+fp6mpqZL9r4QHj/8fj/a5ESReDBpA3oNJ0AZgD4SxvM8vmNHO8Wi0f/MHKFQSNOxxufzCgJIWUP0mhEB/M3vFsbv6+6CoVsMmVbKHSu63mx4HgDvVygrNn9udO7YBc9vM2wZ+2PvTzQ2Nn5rdvgM8oJpo/KA/cL4TZt8FN3WaOg6PpOZv1XF2eFZOCakawTgBTZl6nlZmYdzCUq8pZmMltnZJJ0fGqKLFy+p1Wc5B+F1guYRAON9KL4G3hPGs2wJBk3ZzeHZhhOrvXfvUTtpH3BI8zwAxpeh+Bx4aHkgKndQdXUVebweMlO2bq2n1taEWvWiEqmazgLPAQ+ISjzeQgmgrKyMrCDN25voApbN6XSaq03ATqBfkwhQ0tzjot4GttvbWi1jPAv3pa6uVq3aq+Un0ClWc5UVFTnvW1G8Xq+6WqMlAXcst1pTbcgucTGylF2xZ5rWkgD3v3m4k6wqU9PT6uplLQmYEBc3Z2YsaXwqlaJr1ybUqjNaEvCduOCXrLJba6oMDJyjxcXlPdLvkQiNaUYAGuNw6uHrLL4zzsMXFhas8d0j2+vrX7FhyvKKHqvB48qmR/mNG39Sz+kz1JqIU6gqRA4TpsN0JkPXJ6/T0PAwzczMqm+9DYf16LIWQD7wNIpTVPhpjtHCW2OHxXmBLgcjIOFRFO8CVRYy/C9Of4GT6sNU3U6GQIJXWXA8AkQBlwlG81ERnzV8AXwGw2/mGx902xDZCCIJkARIAiQBuhAwMjLCf1k5qFIlgcZYLPYH7vG++CWAt4n4AC8K/VW99cUSUOyu8Gvcvqp+io1Xro8pnWM5qeqc3vqipOhPAJ74BMVjRnp5Pd7XOwJYXjXBy5p6v+RBEB75FMURK3q/0AjIPbQWVhN0qsLqs8BakH+VlQRIAiQBkoDbWf4RYAAZUY7YOmfbywAAAABJRU5ErkJggg=="/>
+                                </svg>
+                            </div>        
+                        </div>
+                    </div>
+                    <div class="c-card__item--right">
+                        <div class="c-weather c-weather--empty"></div>
+                        <div class="c-weather c-weather--detail">
+                            Humidity
+                            <div class="c-weather--detail__value" id="js-humidity">5%</div>
+                        </div>
+                        <div class="c-weather c-weather--detail">
+                            Wind
+                            <div class="c-weather--detail__value" id="js-wind">25 kph</div>
+                        </div>
+                    </div>
+                </div>
+                <canvas id="myChart" class="c-chart"></canvas>
+            </div>
+        </div>
+	</body>
+</html>
