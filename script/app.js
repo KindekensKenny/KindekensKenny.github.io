@@ -612,8 +612,8 @@ const weatherconditionIcon = function(condition, isDay) {
 	}
 }
 
-// Temperature chart for the day
-const temperatureChart = function(hours) {
+// Temperature chart for the day [celsius]
+const temperatureChartC = function(hours) {
 	var xValues = [
 		'','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00',
 		'09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00',
@@ -690,6 +690,84 @@ const temperatureChart = function(hours) {
 	});
 }
 
+// Temperature chart for the day [celsius]
+const temperatureChartF = function(hours) {
+	var xValues = [
+		'','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00',
+		'09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00',
+		'18:00','19:00','20:00','21:00','22:00','23:00'];
+	var yValues = 
+	[	
+		`${hours[0].feelslike_f}`,
+		`${hours[1].feelslike_f}`,
+		`${hours[2].feelslike_f}`,
+		`${hours[3].feelslike_f}`,
+		`${hours[4].feelslike_f}`,
+		`${hours[5].feelslike_f}`,
+		`${hours[6].feelslike_f}`,
+		`${hours[7].feelslike_f}`,
+		`${hours[8].feelslike_f}`,
+		`${hours[9].feelslike_f}`,
+		`${hours[10].feelslike_f}`,
+		`${hours[11].feelslike_f}`,
+		`${hours[12].feelslike_f}`,
+		`${hours[13].feelslike_f}`,
+		`${hours[14].feelslike_f}`,
+		`${hours[15].feelslike_f}`,
+		`${hours[15].feelslike_f}`,
+		`${hours[16].feelslike_f}`,
+		`${hours[17].feelslike_f}`,
+		`${hours[18].feelslike_f}`,
+		`${hours[19].feelslike_f}`,
+		`${hours[20].feelslike_f}`,
+		`${hours[21].feelslike_f}`,
+		`${hours[22].feelslike_f}`,
+		`${hours[23].feelslike_f}`,
+	];
+	
+	new Chart("myChart", {
+		type: "line",
+	  	data: {
+			labels: xValues,
+			datasets: [{
+				label: 'Temperature',
+				backgroundColor: "rgba(225, 225, 18, 0.67)",
+		  		borderColor: "rgba(0,0,0,0.2)",
+		  		data: yValues
+			}]
+	  	},
+		options: {
+			scales: {
+				xAxes: [{
+					gridLines: {
+						color: "rgba(0, 0, 0, 0)",
+					},
+					ticks: {
+						fontColor: "#747b80",
+					}
+				}],
+				yAxes: [{
+					suggestedMax: 40,
+					suggestedMin: 0,
+					gridLines: {
+						color: "rgba(0, 0, 0, 0)",
+					},
+					ticks: {
+						fontColor: "#747b80",
+					}   
+				}],
+			},
+			legend: {
+				display: false
+			},
+			tooltips: {
+				enabled: false
+			},
+			maintainAspectRatio: false
+		}
+	});
+}
+
 const showResult = (queryResponse) => {
 	//console.log({queryResponse});
 	//console.log(queryResponse.forecast.forecastday[0].hour);
@@ -716,21 +794,21 @@ const showResult = (queryResponse) => {
 	// Default Using Celsius
 	temperature.innerHTML = `${queryResponse.current.temp_c}°`;
 	feelslike.innerHTML =`Feels like ${queryResponse.current.feelslike_c}°`;
+	temperatureChartC(queryResponse.forecast.forecastday[0].hour);
 
-	// Change Temperatures to Celsius
+	// Change Temperatures and chart to Celsius
 	document.getElementById('toggle-degrees').addEventListener("click", function(){
 		temperature.innerHTML = `${queryResponse.current.temp_c}°`;
 		feelslike.innerHTML =`Feels like ${queryResponse.current.feelslike_c}°`;
+		temperatureChartC(queryResponse.forecast.forecastday[0].hour);
 	});
 
-	// Change Temperatures to Farenheit
+	// Change Temperatures and chart to Farenheit
 	document.getElementById('toggle-degrees2').addEventListener("click", function(){
 		temperature.innerHTML = `${queryResponse.current.temp_f}°`;
 		feelslike.innerHTML =`Feels like ${queryResponse.current.feelslike_f}°`;
+		temperatureChartF(queryResponse.forecast.forecastday[0].hour);
 	});
-
-	// Show temperature chart for today
-	temperatureChart(queryResponse.forecast.forecastday[0].hour);
 
 	// Darkmode Toggle
 	toggleBackground.addEventListener('click', function(){
