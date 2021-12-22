@@ -74,7 +74,7 @@
 */
 
 html {
-    font-size: 90%;
+    font-size: 100%;
     line-height: 1.5;
     font-family: 'Inter', sans-serif;
     color: var(--global-page-color);
