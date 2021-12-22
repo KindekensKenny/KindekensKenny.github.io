@@ -379,7 +379,6 @@ svg * {
 
 .c-card__item {
     display: flex;
-    margin-bottom: 25px;
 }
 
 .c-card__item--left {
