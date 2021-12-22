@@ -755,7 +755,7 @@ const showResult = (queryResponse) => {
 const get = (url) => fetch(url).then((r) => r.json());
 
 const getAPI= async (lat, lon) => {
-	const endPoint = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=1&aqi=no&alerts=no`;
+	const endPoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=1&aqi=no&alerts=no`;
 	const response = await get(endPoint);
 
 	showResult(response);
