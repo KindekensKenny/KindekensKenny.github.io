@@ -393,7 +393,6 @@ svg * {
     display: grid;
     grid-template-columns: auto auto 1fr;
     margin-top: -10px;
-    margin-bottom: 10px;
 }
 
 .c-card__header--grid--item__celsius {
